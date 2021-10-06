@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     </head>
-    <body>
+<body>
     
         {% include "layouts/nav-component.html"%}
             
@@ -19,9 +19,66 @@
 
         {% endblock content %}
 
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content btn-rounded">
+            <div class="modal-body text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+                <div class="row justify-content-center my-3">
+                    <img style="max-width:100px" src="https://about.pinterest.com/sites/all/themes/custom/pinterest/images/pinterest-footer-logo.png?e60023">
+                </div>
+
+                    <h1>Welcome to Pintrest</h1>
+
+                <div class="row justify-content-center mt-4">
+                    <div class="col-lg-8">
+                        <form>
+                            <div class="form-group">
+                                <input type="email" class="form-control form-control-lg input-rounded" placeholder="Email">
+                                <input type="password" class="form-control form-control-lg input-rounded mt-1" placeholder="Password">
+                                <a href="#"  class="font-weight-bold btn text-dark btn-sm border-0 text-left w-100">Forgot your Password?</a>
+                                <button type="submit" class="btn btn-danger btn-rounded w-100 mt-2">Continue</button>
+                            </div>
+
+                        <p class="font-weight-bold">Or</p> 
+
+                            <button type="button" class="btn btn-primary btn-rounded w-100 mt-2">
+                                Continue with Facebook
+                            </button>
+                            <button type="button" class="btn btn-light btn-rounded w-100 mt-2">
+                                Continue with Google
+                            </button>
+
+                            <small>
+                                By continuing, you agree to Pinterest's<a href="#" class="font-weight-bold text-dark">Terms of Service</a> and acknowledge you've read our<a href="#" class="font-weight-bold text-dark"> Privacy Policy</a>
+                            </small>
+                            <br>
+
+                            <hr class="bg-light">
+                            <small>
+                                <a href="javascript:void(0)" id="openRegisterModal" class="font-weight-bold text-dark mt-4">Already a member?Log in</a><br>
+                                <a href="#" class="font-weight-bold text-dark mt-2">Are you a business?
+                                    Get started here!</a>
+                            </small>
+
+
+                        </form>
+                        <hr>
+                        <div class="row justify-content-center mt-4">
+                            <a href="#" class="btn btn-outline-dark border-0">Create a free business Account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content btn-rounded">
             <div class="modal-body text-center">
@@ -89,15 +146,15 @@
         $(document).ready(function(){
             $("#openLoginModal").click(function(){
                 $("#exampleModal"). modal("hide");
-                $("#loginModal"). modal("show");
+                $("#LoginModal"). modal("show");
             });
 
             $("#openRegisterModal").click(function(){
                 $("#exampleModal"). modal("hide");
-                $("#loginModal"). modal("show");
+                $("#LoginModal"). modal("show");
             });
 
         });
     </script>
-    </body>
+</body>
 </html>
