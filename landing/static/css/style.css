@@ -20,6 +20,10 @@
     color: black;
 }
 
+.page-footer {
+    background-color: #ddd7d3;
+}
+
 .card-link>img:hover {
     transform: scale(1.05);
     transition: all .2s ease-in-out;
@@ -46,4 +50,9 @@
     outline: none !important;
     border: 1px solid red;
     box-shadow: 0 0 10px #719ECE;
+}
+
+.md-form {
+    border-radius: 20px!important;
+    background: #fff;
 }
