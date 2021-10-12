@@ -1,6 +1,9 @@
 {% load static %}
+
+{% load widget_tweaks %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,9 +40,16 @@
                 <div class="row justify-content-center mt-4">
                     <div class="col-lg-8">
                         <form>
+                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-lg input-rounded focus" placeholder="Email">
-                                <input type="password" class="form-control form-control-lg input-rounded focus mt-1" placeholder="Password">
+                                {% for hidden in login_form.hidden_fields %}
+                                    {{hidden}}
+                                {% endfor %}
+
+                                {% for field in login_form.visible_fields %}
+                                    {{field|add_class:'form-control form-control-lg input-rounded my-1'}}
+                                {% endfor %}
+
                                 <a href="#"  class="font-weight-bold btn text-dark btn-sm border-0 text-left w-100">Forgot your Password?</a>
                                 <button type="submit" class="btn btn-danger btn-rounded w-100 mt-2">Continue</button>
                             </div>
@@ -99,10 +109,16 @@
                 <div class="row justify-content-center mt-4">
                     <div class="col-lg-8">
                         <form>
+                            {% csrf_token %}
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-lg input-rounded focus" placeholder="Email">
-                                <input type="password" class="form-control form-control-lg input-rounded focus mt-1" placeholder="Create Password">
-                                <input type="text" class="form-control form-control-lg input-rounded focus mt-1" placeholder="Age">
+                                {% for hidden in register_form.hidden_fields %}
+                                    {{hidden}}
+                                {% endfor %}
+
+                                {% for field in register_form.visible_fields %}
+                                    {{field|add_class:'form-control form-control-lg input-rounded my-1'}}
+                                {% endfor %}
+
                                 <button type="submit" class="btn btn-danger btn-rounded w-100 mt-2">Continue</button>
                             </div>
 

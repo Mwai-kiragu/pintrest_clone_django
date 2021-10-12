@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .forms import RandomForm
+from .forms import RandomForm, LoginForm, RegisterForm
+
 
 # Create your views here.
 
@@ -11,7 +12,8 @@ def home(request):
     
     context= {
         "title" : "My first Title",
-        "form" : RandomForm(),
+        "login_form" : LoginForm(),
+        "register_form" : RegisterForm(),
         "first_name": "Rey",
         "last_name": "Mysterio",
         "activity": "Best",
