@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import RandomForm, LoginForm, RegisterForm
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 # Create your views here.
 
@@ -59,4 +61,30 @@ def registerUser(request):
             user.save()
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+def loginUser(request):
+    
+    if request.method == 'GET':
+        HttpResponse("Go home")
+
+    else:
+
+        form = LoginForm(request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                context = {}
+
+
+                return render(request, 'profile.html', context)
+            else:
+                messages.error(request, 'Login not Successful')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        else:
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 

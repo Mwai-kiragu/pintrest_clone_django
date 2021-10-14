@@ -7,7 +7,7 @@ class RegisterForm(forms.Form):
     age = forms.IntegerField(widget=forms.TextInput(attrs={'placeholder':'Age'}))
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Email'}))
+    username = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Username'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
 
 class RandomForm(forms.Form):
