@@ -56,3 +56,12 @@
     border-radius: 20px!important;
     background: #fff;
 }
+
+.wider-dropdown {
+    min-width: 300px !important;
+}
+
+.dark-droplinks {
+    color: black;
+    font-weight: bold;
+}

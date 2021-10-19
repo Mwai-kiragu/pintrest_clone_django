@@ -20,5 +20,6 @@ from landing import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('landing.urls')),
+    path('accounts', include('django.contrib.auth.urls'))
     
 ]

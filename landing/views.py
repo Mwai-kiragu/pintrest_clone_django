@@ -2,9 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from .forms import RandomForm, LoginForm, RegisterForm
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.core.mail import send_mail
+
 
 # Create your views here.
 
@@ -109,4 +110,10 @@ def profile(request):
     context={}
 
     return render(request, 'profile.html', context)
+
+def logout(request):
+
+    logout(request)
+
+    return HttpResponseRedirect('/')
 
