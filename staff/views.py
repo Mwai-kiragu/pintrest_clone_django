@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect, JsonResponse
+from landing.models import Pin, Board, Comment
 
 # Create your views here.
 
@@ -42,3 +43,24 @@ def deleteUser(request, id):
 
     else:
         return HttpResponseRedirect('/staff/users')
+
+def viewPin(request):
+    context = {
+        'pin' : Pin.objects.all()
+    }
+
+    return render(request, 'pin.html', context)
+
+def viewBoard(request):
+    context = {
+        'board' : Board.objects.all()
+    }
+
+    return render(request, 'board.html', context)
+
+def viewComment(request):
+    context = {
+        'comment' : Comment.objects.all()
+    }
+
+    return render(request, 'comment.html', context)
