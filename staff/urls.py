@@ -5,5 +5,8 @@ from .views import *
 
 urlpatterns = [
     path('dashboard', dashboard, name='dashboard'),
+    path('users', viewUsers, name='users'),
+    path('users/<id>', userDetails, name="user.details"),
+    path('users/delete/<id>', deleteUser, name="user.delete"),
     # path('user/sendEmail', views.sendEmail, name='user.sendEmail'),
 ]
