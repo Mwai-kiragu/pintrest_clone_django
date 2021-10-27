@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect, JsonResponse
 from landing.models import Pin, Board, Comment
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView
+from .models import *
 
 # Create your views here.
 
@@ -53,7 +56,7 @@ def viewPin(request):
 
 def viewBoard(request):
     context = {
-        'board' : Board.objects.all()
+        'boards' : Board.objects.all()
     }
 
     return render(request, 'board.html', context)
@@ -64,3 +67,9 @@ def viewComment(request):
     }
 
     return render(request, 'comment.html', context)
+
+class CreateBoard(CreateView):
+    model = Board
+    fields = '__all__'
+    success_url = '/staff/boards'
+    template_name = 'board_form.html'

@@ -8,8 +8,9 @@ urlpatterns = [
     path('users', viewUsers, name='users'),
     path('users/<id>', userDetails, name="user.details"),
     path('pin', viewPin, name='pin'),
-    path('board', viewBoard, name='board'),
+    path('boards', viewBoard, name='board'),
     path('comment', viewComment, name='comment'),
     path('users/delete/<id>', deleteUser, name="user.delete"),
+    path('board/create', CreateBoard.as_view(), name="create.board")
     # path('user/sendEmail', views.sendEmail, name='user.sendEmail'),
-]
+]   

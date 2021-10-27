@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'landing.apps.LandingConfig',
     'staff.apps.StaffConfig',
-    'widget_tweaks'
+    'widget_tweaks',
+    # 'sendemail.apps.SendemailConfig',       
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,6 @@ EMAIL_HOST_PASSWORD = '54744415f36668'
 EMAIL_PORT = '2525'
 
 LOGOUT_REDIRECT_URL = "/"
+
+MEDIA_URL ='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
