@@ -2,10 +2,9 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect, JsonResponse
-from landing.models import Pin, Board, Comment
+from landing.models import *
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
-from .models import *
 
 # Create your views here.
 
@@ -73,3 +72,62 @@ class CreateBoard(CreateView):
     fields = '__all__'
     success_url = '/staff/boards'
     template_name = 'board_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Create Board"
+        return context
+
+class CategoryList(ListView):
+    model = Category
+    context_object_name  ="categoriess"
+    template_name = 'categories.html'
+
+class CreateCategory(CreateView):
+    model = Category
+    fields = ['name']
+    success_url = '/staff/categories'
+    template_name = 'board_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Create Category"
+        return context
+
+class CategoryUpdate(UpdateView):
+    model = Category
+    fields = ['name']
+    success_url = '/staff/categories'
+    template_name = 'board_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Update Category"
+        return context
+
+class PinList(ListView):
+    model = Pin
+    context_object_name  = "pins"
+    template_name = 'pin.html'
+
+class CreatePin(CreateView):
+    model = Pin
+    fields = '__all__'
+    success_url = '/staff/pins'
+    template_name = 'board_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Create Pin"
+        return context
+
+class PinUpdate(UpdateView):
+    model = Pin
+    fields = '__all__'
+    success_url = '/staff/pins'
+    template_name = 'board_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Update Pin"
+        return context

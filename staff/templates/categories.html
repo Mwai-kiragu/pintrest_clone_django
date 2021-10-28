@@ -10,10 +10,10 @@
         <div class="card">
             <div class="card-header bg-white">
                 <div class="row">
-                    <h5>Pins ({{pins|length}})</h5>
-                    <a href="{% url 'create.pin' %}" class="btn btn-danger btn-sm ml-auto">
+                    <h5>Category</h5>
+                    <a href="{% url 'create.category' %}" class="btn btn-danger btn-sm ml-auto">
                         <i class="fa fa-plus-circle mr-2"></i>
-                        Create Pin
+                        Create Category
                     </a>
                 </div>
             </div>
@@ -25,22 +25,18 @@
                             <th>Name</th>
                             <th>Created_at</th>
                             <th>Updated_at</th>
-                            <th>Actions</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for pin in pins %}
+                        {% for categories in categoriess %}
                             <tr>
-                                <td>{{pin.id}}
-                                <img src="{{pin.image.url}}" height="50px" width="50px">
-                                </td>
-
-                                    
-                                <td>{{pin.title}}</td>
-                                <td>{{pin.created_at}}</td>
-                                <td>{{pin.update_at}}</td>
-                                <td>
-                                    <a href="{% url 'pin.update' pin.id %}" class="btn btn-dark btn-sm"><i class="fa fa-eye"></i></a>
+                                <td>{{categories.id}}</td>
+                                <td>{{categories.name}}</td>
+                                <td>{{categories.created_at}}</td>
+                                <td>{{categories.updated_at}}</td>
+                                <td>    
+                                    <a href="{% url 'category.update' categories.id %}" class="btn btn-dark btn-sm"><i class="fa fa-edit"></i></a>
                                     <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
