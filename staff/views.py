@@ -5,9 +5,11 @@ from django.http import HttpResponseRedirect, JsonResponse
 from landing.models import *
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
-
+@login_required
 def dashboard(request):
 
     context = {
@@ -120,6 +122,19 @@ class CreatePin(CreateView):
         context = super().get_context_data(**kwargs)
         context["title"] = "Create Pin"
         return context
+
+def pinDetails(request, pk):
+
+    context={
+        'pin' : Pin.objects.get(pk = pk)
+    }
+
+    return render(request, 'pin_details.html', context)
+
+class PinDetails(DetailView):
+    model= Pin
+    template_name = 'pin_details.html'
+    context_object_name = "pin"
 
 class PinUpdate(UpdateView):
     model = Pin

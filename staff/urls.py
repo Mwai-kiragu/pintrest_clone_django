@@ -12,6 +12,7 @@ urlpatterns = [
     path('pins', PinList.as_view(), name="pins"),
     path('pin/create', CreatePin.as_view(), name="create.pin"),
     path('pin/update/<pk>', PinUpdate.as_view(), name="pin.update"),
+    path('pin/<pk>/details', PinDetails.as_view(), name="pin.details"),
     path('boards', viewBoard, name='board'),
     path('comment', viewComment, name='comment'),
     path('users/delete/<id>', deleteUser, name="user.delete"),

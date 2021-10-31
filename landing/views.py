@@ -5,24 +5,19 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.core.mail import send_mail
+from .models import *
 
 
 # Create your views here.
 
 
 def home(request):
-
-    fruits = ['apples', 'avs', 'mango', 'melon']
+    
     
     context= {
-        "title" : "My first Title",
         "login_form" : LoginForm(),
         "register_form" : RegisterForm(),
-        "first_name": "Rey",
-        "last_name": "Mysterio",
-        "activity": "Best",
-        "hobby": "Wrestler",
-        "fruits": fruits,
+        'pins' : Pin.objects.all()
     }
 
     return render(request, 'home.html', context)
