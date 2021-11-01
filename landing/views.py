@@ -78,19 +78,21 @@ def registerUser(request):
 def loginUser(request):
     
     if request.method == 'GET':
-        HttpResponse("Go home")
+        return HttpResponseRedirect('/')
 
     else:
 
         form = LoginForm(request.POST)
+
 
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
 
             user = authenticate(request, username=username, password=password)
+            # user = User.objects.get(username = username)
             if user is not None:
-                login(request, user)
+                login(request, user)    
                 context = {}
 
 

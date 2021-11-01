@@ -18,7 +18,7 @@ def dashboard(request):
     }
 
     return render(request, 'dashboard.html', context)
-
+@login_required
 def viewUsers(request):
     context = {
         'users' : User.objects.all()
@@ -26,7 +26,7 @@ def viewUsers(request):
 
     return render(request, 'users.html', context)
 
-
+@login_required
 def userDetails(request, id):
 
     user= User.objects.get(pk = id)
@@ -35,7 +35,7 @@ def userDetails(request, id):
     }
 
     return render(request, 'user_details.html', context)
-
+@login_required
 def deleteUser(request, id):
     user= User.objects.get(pk = id)
 
@@ -54,14 +54,14 @@ def viewPin(request):
     }
 
     return render(request, 'pin.html', context)
-
+@login_required
 def viewBoard(request):
     context = {
         'boards' : Board.objects.all()
     }
 
     return render(request, 'board.html', context)
-
+@login_required
 def viewComment(request):
     context = {
         'comment' : Comment.objects.all()
@@ -122,7 +122,7 @@ class CreatePin(CreateView):
         context = super().get_context_data(**kwargs)
         context["title"] = "Create Pin"
         return context
-
+@login_required
 def pinDetails(request, pk):
 
     context={
@@ -136,7 +136,7 @@ class PinDetails(DetailView):
     template_name = 'pin_details.html'
     context_object_name = "pin"
 
-class PinUpdate(UpdateView):
+class PinUpdate(LoginRequiredMixin, UpdateView):
     model = Pin
     fields = '__all__'
     success_url = '/staff/pins'
@@ -145,4 +145,40 @@ class PinUpdate(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = "Update Pin"
+        return context
+
+class CreateComment(CreateView):
+    model = Pin
+    fields = '__all__'
+    success_url = '/staff/comment'
+    template_name = 'comment_details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Create Comment"
+        return context
+
+@login_required
+def commentDetails(request, pk):
+
+    context={
+        'comment' : Comment.objects.get(pk = pk)
+    }
+
+    return render(request, 'comment_details.html', context)
+
+class CommentDetails(DetailView):
+    model= Comment
+    template_name = 'comment_details.html'
+    context_object_name = "comment"
+
+class CommentUpdate(UpdateView):
+    model = Comment
+    fields = '__all__'
+    success_url = '/staff/comment'
+    template_name = 'comment_details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Update Comment"
         return context
