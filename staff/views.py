@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponseRedirect
 from landing.models import *
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
@@ -47,6 +47,17 @@ def deleteUser(request, id):
 
     else:
         return HttpResponseRedirect('/staff/users')
+# def deletePin(request , id):
+#     pin=Pin.objects.get(pk = id)
+
+#     pin.delete()
+
+#     if request.is_ajax():
+#         date= {}
+#         return JsonResponse(data)
+
+#     else:
+#         return HttpResponseRedirect('/staff/pin')
 
 def viewPin(request):
     context = {

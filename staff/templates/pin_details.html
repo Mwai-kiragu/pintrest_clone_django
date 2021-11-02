@@ -18,7 +18,7 @@
         <h6>Posted By: {{pin.user}}</h6>
         <p>{{pin.description}}</p>
         <div class="row justify-content-center">
-            <a href="#" class="btn btn-outline-danger mx-2">Update</a>
+            <a href="{% url 'pin.update' pin.id %}" class="btn btn-outline-danger mx-2">Update</a>
             <a href="#" class="btn btn-danger mx-2">Delete</a>
         </div>
     </div>

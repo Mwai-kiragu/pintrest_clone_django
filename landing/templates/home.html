@@ -12,10 +12,14 @@
     </div>
     <div class="row">
         {% for pin in pins%}
+            <a href="{% url 'pin.image' %}">
             <img src="{{pin.image.url}}" width="100px" class="btn-rounded" style="object-fit: cover;">
-
+            </a>
         {% endfor %}
+        
     </div>
+
+    <p class="font-weight-bold">My first pin</p>
 
 </div>
 

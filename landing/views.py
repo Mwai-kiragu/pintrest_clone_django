@@ -114,3 +114,8 @@ def logout(request):
 
     return HttpResponseRedirect('/')
 
+def description(request):
+
+    context={}
+
+    return render(request, 'layouts/description.html', context)
