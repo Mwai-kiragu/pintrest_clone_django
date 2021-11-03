@@ -1,11 +1,28 @@
 {% extends 'layouts/base.html' %}
 
+{% load static %}
+
 {% block content%}
 
-    <div class="container">
-        <div class="row justify-content-center">
+<div class="container justify-content-center d-flex">
+    <div class="card shadow mt-5 p-3 bg-white w-100" style="border-radius:2%;">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <img class="w-100 float-start" src="{% static 'images/img.jpg' %}" style="border-radius:3%;">
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-12">
+                <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                <i class="fa fa-upload" aria-hidden="true"></i>
+            </div>
+
+        </div>
+        <div class="row">
+        
         
         </div>
     </div>
+
+
+</div>
 
 {% endblock content %}
