@@ -11,11 +11,13 @@
 
     </div>
     <div class="row">
-        {% for pin in pins%}
-            <a href="{% url 'pin.image' %}">
-            <img src="{{pin.image.url}}" width="100px" class="btn-rounded" style="object-fit: cover;">
-            </a>
-        {% endfor %}
+        <div class="col-lg-2 col-md-3 col-sm-6">
+            {% for pin in pins%}
+                <a href="{% url 'pin.image' %}">
+                <img src="{{pin.image.url}}" width="100px" class="btn-rounded" style="object-fit: cover;">
+                </a>
+            {% endfor %}
+        </div>
         
     </div>
 
