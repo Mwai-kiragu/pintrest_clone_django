@@ -8,6 +8,7 @@ from .views import *
 urlpatterns = [
     path('dashboard', dashboard, name='dashboard'),
     path('users', viewUsers, name='users'),
+    path('user/create', CreateUser.as_view(), name="create.user"),
     path('users/<id>', userDetails, name="user.details"),
     path('pins', PinList.as_view(), name="pins"),
     path('pin/create', CreatePin.as_view(), name="create.pin"),

@@ -123,6 +123,22 @@ class PinList(ListView):
     context_object_name  = "pins"
     template_name = 'pin.html'
 
+class UserDetails(DetailView):
+    model= Pin
+    template_name = 'user_details.html'
+    context_object_name = "user"
+
+class CreateUser(CreateView):
+    model = User
+    fields = '__all__'
+    success_url = '/staff/user'
+    template_name = 'board_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Create User"
+        return context
+
 class CreatePin(CreateView):
     model = Pin
     fields = '__all__'
