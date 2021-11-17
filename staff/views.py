@@ -93,7 +93,7 @@ class CreateBoard(CreateView):
 
 class CategoryList(ListView):
     model = Category
-    context_object_name  ="categoriess"
+    context_object_name  ="categories"
     template_name = 'categories.html'
 
 class CreateCategory(CreateView):
@@ -123,7 +123,7 @@ class PinList(ListView):
     context_object_name  = "pins"
     template_name = 'pin.html'
 
-class UserDetails(DetailView):
+class UserDetails(DetailView):  
     model= Pin
     template_name = 'user_details.html'
     context_object_name = "user"
